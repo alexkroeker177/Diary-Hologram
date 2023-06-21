@@ -1,0 +1,23 @@
+name: hub
+description: ""
+permissions:
+    owner: "0000000000000000000000000000"
+    admin:
+        public: false
+        auth: false
+        users: []
+        groups: []
+    extend:
+        public: false
+        auth: false
+        users: []
+        groups: []
+    view:
+        public: false
+        auth: false
+        users: []
+        groups: []
+types: []
+interfaces: []
+blueprints: []
+models: []

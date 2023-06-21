@@ -1,0 +1,173 @@
+name: test2
+description: ""
+permissions:
+    owner: "0000000000000000000000000000"
+    admin:
+        public: false
+        auth: false
+        users: []
+        groups: []
+    extend:
+        public: false
+        auth: false
+        users: []
+        groups: []
+    view:
+        public: false
+        auth: false
+        users: []
+        groups: []
+types:
+    - name: entry
+      description: A diary entry.
+      permissions:
+        owner: 2f031e2e26bb43701e40d707ce63
+        admin:
+            public: false
+            auth: false
+            users: []
+            groups: []
+        extend:
+            public: false
+            auth: true
+            users: []
+            groups: []
+        view:
+            public: true
+            auth: false
+            users: []
+            groups: []
+      mapOf:
+        date:
+            name: date
+            leaf: string
+        entryContent:
+            name: entryContent
+            leaf: string
+        id:
+            name: id
+            leaf: string
+        title:
+            name: title
+            leaf: string
+    - name: tag
+      description: Tag for an entry to categorize its content.
+      permissions:
+        owner: 2f031e2e26bb43701e40d707ce63
+        admin:
+            public: false
+            auth: false
+            users: []
+            groups: []
+        extend:
+            public: false
+            auth: true
+            users: []
+            groups: []
+        view:
+            public: true
+            auth: false
+            users: []
+            groups: []
+      mapOf:
+        category:
+            name: category
+            leaf: string
+        id:
+            name: id
+            leaf: string
+        name:
+            name: name
+            leaf: string
+interfaces:
+    - name: Diary
+      description: 'A basic diary. '
+      permissions:
+        owner: 2f031e2e26bb43701e40d707ce63
+        admin:
+            public: false
+            auth: false
+            users: []
+            groups: []
+        extend:
+            public: false
+            auth: true
+            users: []
+            groups: []
+        view:
+            public: true
+            auth: false
+            users: []
+            groups: []
+      hubs:
+        - description: Add an entry to the diary.
+          direction: none
+          input:
+            - name: entry
+              description: Diary entry to be added.
+              value: $entry
+          name: addEntry
+          output: []
+          type: pipe
+        - description: Remove an entry from the diary.
+          direction: none
+          input:
+            - name: id
+              description: Id of the diaryentry to be removed
+              value: string
+          name: removeEntry
+          output: []
+          type: pipe
+        - description: Value of entryList in Diary.
+          direction: both
+          name: entryList
+          type: value
+          value:
+            name: entryList
+            description: List of diary entries
+            value:
+                description: A list of strings.
+                listOf:
+                    description: A type reference.
+                    reference: entry
+        - description: Method addTag of Diary.
+          direction: none
+          input:
+            - name: entry
+              description: The entry to apply the tag to.
+              value: $entry
+            - name: tag
+              description: The tag to be added.
+              value: $tag
+          name: addTag
+          output: []
+          type: pipe
+blueprints:
+    - name: Diary
+      description: ""
+      permissions:
+        owner: 2f031e2e26bb43701e40d707ce63
+        admin:
+            public: false
+            auth: false
+            users: []
+            groups: []
+        extend:
+            public: false
+            auth: true
+            users: []
+            groups: []
+        view:
+            public: true
+            auth: false
+            users: []
+            groups: []
+      constructor: []
+      interface:
+        extends:
+            - Diary
+        hubs: []
+      implementation:
+        docker:
+            - {}
+models: []

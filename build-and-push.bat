@@ -1,2 +1,2 @@
-docker build . --tag registry.bitspark.com/blank_sparkable
-docker push registry.bitspark.com/blank_sparkable
+docker build . --tag registry.bitspark.com/diary
+docker push registry.bitspark.com/diary

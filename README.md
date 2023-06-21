@@ -1,18 +1,18 @@
-# BlankSparkable
+# Diary
 
-URL: [bitspark.studio/sparkable/fullBlankDomain.BlankSparkable](https://bitspark.studio/sparkable/fullBlankDomain.BlankSparkable)
+URL: [bitspark.studio/sparkable/hub.testing.test2.Diary](https://bitspark.studio/sparkable/hub.testing.test2.Diary)
 
-A sparkable in the domain [blankDomain](https://bitspark.studio/domain/fullBlankDomain).
+A sparkable in the domain [test2](https://bitspark.studio/domain/hub.testing.test2).
 
 ## Description
 
-@@SPARKABLE_DESCRIPTION@@
+
 
 ## Development
 
 ### Implement stubs
 
-To implement your sparkable, implement the stubs in [app/blank_sparkable.go](app/blank_sparkable.go).
+To implement your sparkable, implement the stubs in [app/diary.go](app/diary.go).
 
 ### Test your implementation
 

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"blank-sparkable/app"
 	"context"
+	"diary/app"
 	"github.com/Bitspark/go-bitnode/api/wsApi"
 	"github.com/Bitspark/go-bitnode/bitnode"
 	"github.com/Bitspark/go-bitnode/library"
@@ -35,7 +35,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	blankDomain := &app.Domain{
+	test2 := &app.Domain{
 		Domain: dom,
 		Node:   node,
 	}
@@ -55,30 +55,30 @@ func main() {
 
 	creds := bitnode.Credentials{}
 
-	var blankSbl *app.BlankSparkable
+	var diary *app.Diary
 
 	if len(node.Systems(creds)) == 0 {
 		var err error
-		blankSbl, err = blankDomain.NewBlankSparkable()
+		diary, err = test2.NewDiary()
 		if err != nil {
 			log.Fatal(err)
 		}
 
 		// Make computer system the root system.
-		node.SetSystem(blankSbl.Native())
+		node.SetSystem(diary.Native())
 	} else {
 		log.Printf("Found %d startup systems", len(node.Systems(creds)))
 
 		// Get the system from the node.
-		blankSblSys := node.System(creds)
+		diarySys := node.System(creds)
 
-		blankSbl = &app.BlankSparkable{
-			System: blankSblSys,
+		diary = &app.Diary{
+			System: diarySys,
 		}
 	}
 
-	// Add the custom BlankSparkable implementation.
-	if err := blankSbl.Init(); err != nil {
+	// Add the custom Diary implementation.
+	if err := diary.Init(); err != nil {
 		log.Fatal(err)
 	}
 

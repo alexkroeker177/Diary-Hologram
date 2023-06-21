@@ -1,4 +1,4 @@
-module blank-sparkable
+module diary
 
 go 1.20
 

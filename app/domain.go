@@ -1,4 +1,4 @@
-// This file contains types inside the blankDomain domain.
+// This file contains types inside the test2 domain.
 
 // Package app contains structs and implementations for this app.
 package app
@@ -8,7 +8,32 @@ import (
 	"log"
 )
 
-// @@TYPES@@
+// Entry description: A diary entry.
+type Entry struct {
+	// Date description:
+	Date string `json:"date"`
+
+	// EntryContent description:
+	EntryContent string `json:"entryContent"`
+
+	// Id description:
+	Id string `json:"id"`
+
+	// Title description:
+	Title string `json:"title"`
+}
+
+// Tag description: Tag for an entry to categorize its content.
+type Tag struct {
+	// Name description:
+	Name string `json:"name"`
+
+	// Category description:
+	Category string `json:"category"`
+
+	// Id description:
+	Id string `json:"id"`
+}
 
 // DOMAIN STRUCT
 
@@ -18,27 +43,27 @@ type Domain struct {
 	Node   bitnode.Node
 }
 
-// NewBlankSparkable creates a new BlankSparkable instance.
-func (blankDomain *Domain) NewBlankSparkable() (*BlankSparkable, error) {
-	// Get the BlankSparkable sparkable from the domain.
-	blankSblSpark, err := blankDomain.Domain.GetSparkable("fullBlankDomain.BlankSparkable")
+// NewDiary creates a new Diary instance.
+func (test2 *Domain) NewDiary() (*Diary, error) {
+	// Get the Diary sparkable from the domain.
+	diarySpark, err := test2.Domain.GetSparkable("hub.testing.test2.Diary")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Remove docker implementation.
-	delete(blankSblSpark.Implementation, "docker")
+	delete(diarySpark.Implementation, "docker")
 
-	// Prepare the BlankSparkable spark.
-	blankSblSpk, err := blankDomain.Node.PrepareSystem(bitnode.Credentials{}, *blankSblSpark)
+	// Prepare the Diary spark.
+	diarySpk, err := test2.Node.PrepareSystem(bitnode.Credentials{}, *diarySpark)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Initialize the BlankSparkable.
-	blankSbl := &BlankSparkable{
-		System: blankSblSpk,
+	// Initialize the Diary.
+	diary := &Diary{
+		System: diarySpk,
 	}
 
-	return blankSbl, nil
+	return diary, nil
 }
